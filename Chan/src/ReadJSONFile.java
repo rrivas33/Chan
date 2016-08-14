@@ -159,6 +159,14 @@ public class ReadJSONFile {
         result = document.html().replaceAll("\\\\n", "\n");
         result = Jsoup.clean(result, "", Whitelist.none(),
                 new Document.OutputSettings().prettyPrint(false));
+
+        result = result.replaceAll("&gt;", ">");
+        //replace "&gt;" with ">"
+//        int pos;
+//        while((pos = result.indexOf("&gt;")) != -1)
+//        {
+//            result.replaceAll("&gt;", ">");
+//        }
         return result;
     }
 }

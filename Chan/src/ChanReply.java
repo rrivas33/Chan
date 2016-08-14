@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class ChanReply {
     private String comment;
     private String name;    //name of replier
     private String now;     //time of reply
+    private Image image;    //image in reply
     private List<Long> references = new ArrayList<>();
 
 
@@ -21,6 +23,11 @@ public class ChanReply {
         comment = com;
         name = replier;
         now = time;
+    }
+
+    public void setImage(Image im)
+    {
+        image = im;
     }
 
     public void addReference(long ref)
@@ -48,9 +55,8 @@ public class ChanReply {
         return name;
     }
 
-    public String getNow()
-    {
-        return now;
-    }
+    public String getNow() {return now; }
+
+    public Image getImage() { return image; }
 
 }

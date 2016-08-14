@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -23,12 +24,12 @@ public class Main extends Application {
     static List<ChanThread> threads;
     static List<ChanReply> replies;
     //static List<String> threadCom;
-    final static String url = "https://a.4cdn.org/g/catalog.json";
-    final static String repliesURL = "https://a.4cdn.org/g/thread/55996728.json";
+    final static String boardURL = ChanURL.getBoardURL("g");
+    final static String threadURL = ChanURL.getThreadURL("g", 55996728);
 
     public static void main (String[] args) {
 
-        if(ReadJSONFile.readJSONThreads(url))
+        if(ReadJSONFile.readJSONThreads(boardURL))
         {
             threads = ReadJSONFile.getThreads();
         }
@@ -37,7 +38,7 @@ public class Main extends Application {
             threads = null;
         }
 
-        if(ReadJSONFile.readJSONReplies(repliesURL))
+        if(ReadJSONFile.readJSONReplies(threadURL))
             replies = ReadJSONFile.getReplyList();
         else
             replies = null;
@@ -86,9 +87,13 @@ public class Main extends Application {
 
 
         //position threadListView on left of window layout
-        BorderPane.setAlignment(threadListView, Pos.TOP_LEFT);
-        BorderPane.setMargin(threadListView, new Insets(12, 12, 12, 12));
-        layout.setLeft(threadListView);
+        StackPane left = new StackPane();
+        left.setPrefWidth(340);
+        left.getChildren().add(threadListView);
+        //BorderPane.setAlignment(threadListView, Pos.TOP_LEFT);
+        //BorderPane.setMargin(threadListView, new Insets(12, 12, 12, 12));
+        layout.setLeft(left);
+        //layout.getLeft().prefWidth(300);
 
         //position replyListView on center of window layout
         BorderPane.setAlignment(replyListView, Pos.CENTER);

@@ -1,6 +1,7 @@
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.layout.BorderPane;
 
 /**
  * Created by raul on 8/8/2016.
@@ -10,6 +11,9 @@ import javafx.scene.control.ListCell;
  */
 public class CatalogCellFactory extends ListCell<ChanThread> {
 
+    private static final int CELL_WIDTH = 300;
+    private static final int CELL_HEIGHT = 200;
+
     public CatalogCellFactory() {}
 
     @Override
@@ -17,8 +21,8 @@ public class CatalogCellFactory extends ListCell<ChanThread> {
     {
 
         super.updateItem(item, empty);
-        super.setPrefHeight(200);
-        super.setPrefWidth(300);
+        super.setPrefHeight(CELL_HEIGHT);
+        super.setPrefWidth(CELL_WIDTH);
 
         if(item != null)
         {
@@ -42,4 +46,6 @@ public class CatalogCellFactory extends ListCell<ChanThread> {
             textProperty().bind(new SimpleStringProperty(""));
 
     }
+
+    
 }
