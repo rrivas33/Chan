@@ -1,5 +1,8 @@
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -29,6 +32,16 @@ public class Main extends Application {
 
     public static void main (String[] args) {
 
+
+
+
+        launch(args);
+
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception
+    {
         if(ReadJSONFile.readJSONThreads(boardURL))
         {
             threads = ReadJSONFile.getThreads();
@@ -44,14 +57,6 @@ public class Main extends Application {
             replies = null;
 
 
-
-        launch(args);
-
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception
-    {
         window = stage;
         window.setTitle("4Chan");
 
@@ -60,6 +65,7 @@ public class Main extends Application {
 
         final ListView<ChanThread> threadListView = new ListView<ChanThread>();
         final ListView<ChanReply> replyListView = new ListView<ChanReply>();
+
 
         //populate threadListView
         threadListView.setCellFactory(new Callback<ListView<ChanThread>, ListCell<ChanThread>>() {

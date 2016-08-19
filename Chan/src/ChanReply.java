@@ -1,4 +1,5 @@
-import java.awt.*;
+
+import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class ChanReply {
     private String name;    //name of replier
     private String now;     //time of reply
     private Image image;    //image in reply
-    private List<Long> references = new ArrayList<>();
+    //private List<Long> references = new ArrayList<>();
 
 
     public ChanReply(long id, String com, String replier, String time)
@@ -30,10 +31,7 @@ public class ChanReply {
         image = im;
     }
 
-    public void addReference(long ref)
-    {
-        references.add(ref);
-    }
+    //public void addReference(long ref) { creferences.add(ref); }
 
     public long getCommendID()
     {
@@ -45,10 +43,7 @@ public class ChanReply {
         return comment;
     }
 
-    public List<Long> getReferences()
-    {
-        return references;
-    }
+    //public List<Long> getReferences(){return references;}
 
     public String getName()
     {

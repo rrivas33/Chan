@@ -1,3 +1,4 @@
+import javafx.scene.image.Image;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -38,6 +39,17 @@ public class ReadJSONFile {
             {
                 JSONObject post = (JSONObject) posts.get(i);
 
+                //reply contains image
+                Image image = null;
+                String ext = (String) post.get("ext");
+                if(ext != null && !ext.equals(".webm"))
+                {
+                    System.out.print(ext);
+                    String imgURL = ChanURL.getImageURL("g", (long) post.get("tim"), ext);
+                    image = new Image(imgURL, true);
+                }
+
+
                 long id = (long) post.get("no");
                 String commentHTML = (String) post.get("com");
                 String comment = cleanTagPerservingLineBreaks(commentHTML);
@@ -45,6 +57,7 @@ public class ReadJSONFile {
                 String timeOfPost = (String) post.get("now");
 
                 ChanReply reply = new ChanReply(id, comment, posterName, timeOfPost);
+                reply.setImage(image);
                 replyList.add(reply);
 
             }
