@@ -28,7 +28,7 @@ public class Main extends Application {
     static List<ChanReply> replies;
     //static List<String> threadCom;
     final static String boardURL = ChanURL.getBoardURL("g");
-    final static String threadURL = ChanURL.getThreadURL("g", 55996728);
+    final static String threadURL = ChanURL.getThreadURL("g", 56340729);
 
     public static void main (String[] args) {
 
